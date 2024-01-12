@@ -73,7 +73,7 @@ const HomePage = () => {
           className="h-full w-full object-cover"
           autoPlay="autoplay"
           loop="loop"
-          muted="muted"
+          muted={true}
           preload="auto"
         >
         </video>

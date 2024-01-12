@@ -6,7 +6,7 @@ import "leaflet-defaulticon-compatibility";
 import { useState, useEffect } from 'react'
 
 
-export default function Map(props) {
+export default function Map() {
   // const position = await fetch_position()
   // console.log("position", position)
 
@@ -47,6 +47,7 @@ export default function Map(props) {
         <Popup>
           ISS is here!
         </Popup>
+
       </Marker>
     </MapContainer>
   )
