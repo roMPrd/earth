@@ -13,7 +13,7 @@ const FeedIss = () => {
 
   return (
 
-    <div className="h-[100vh] w-[100vw] p-10 flex ">
+    <section className="h-[100dvh] w-[100dvw] p-10 flex ">
 
       <div className="w-[65%] h-full p-5 flex flex-col items-center justify-center">
         <iframe
@@ -39,7 +39,7 @@ const FeedIss = () => {
         <SatelliteInfo className="w-[50%]"/>
       </div>
 
-    </div>
+    </section>
   )
 }
 

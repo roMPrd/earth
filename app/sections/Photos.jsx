@@ -51,7 +51,7 @@ export default function Photos() {
 
   return (
 
-    <div className="relative h-[100dvh] w-full">
+    <section className="relative h-[100dvh] w-[100dvw]">
       <Swiper
         navigation={true}
         pagination={{type: 'fraction'}}
@@ -67,20 +67,17 @@ export default function Photos() {
         </SwiperSlide>
 
         {dataPhoto.map((i) => (
-          <SwiperSlide className="group relative min-h-0 h-auto" key={i.data[0].nasa_id}>
+          <SwiperSlide className="group relative" key={i.data[0].nasa_id}>
             <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
               <p>{i.hrefHd}</p>
               <p>{i.href}</p>
             </div>
-            <img src={i.hrefHd} alt={i.hrefHd} className="object-cover h-full w-auto"/>
+            <img src={i.hrefHd} alt={i.hrefHd} className="object-cover h-full w-full"/>
             <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
               <p className="mb-2">{}</p>
             </div>
           </SwiperSlide>
         ))}
-
-          {/* <PhotosNasa /> */}
-        {/* </div> */}
 
         {/* <!-- If we need scrollbar --> */}
         {/* <div className="swiper-scrollbar"></div> */}
@@ -90,6 +87,6 @@ export default function Photos() {
         {/* <div class="swiper-button-prev"></div> */}
         {/* <div class="swiper-button-next"></div> */}
       </Swiper>
-    </div>
+    </section>
   )
 }

@@ -26,7 +26,7 @@ export default function Apod() {
           <p className="mb-0">Astronomy Picture of the Day:</p>
           <p>{dataApod.title}</p>
         </div>
-        <img src={dataApod.hdurl} alt={dataApod.title} className="object-cover h-full w-auto"/>
+        <img src={dataApod.hdurl} alt={dataApod.title} className="object-cover h-full w-full"/>
         <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
           <p className="mb-2">{dataApod.explanation}</p>
           <p>{dataApod.date} / © {dataApod.copyright}</p>
