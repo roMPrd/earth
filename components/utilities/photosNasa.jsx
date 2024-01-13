@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export async function fetchHrefHd() {
   const res = await fetch('https://images-api.nasa.gov/search?q=earth&description=International%Space%Station&media_type=image')
@@ -82,15 +83,15 @@ export default function PhotosNasa() {
   //   // })
   // }, [])
 
-  if (isLoadingPhoto) return <p>Photo Loading...</p>
-  if (!dataPhoto) return <p>No Photo data</p>
+  if (isLoadingPhoto) return <SwiperSlide>Photo Loading...</SwiperSlide>
+  if (!dataPhoto) return <SwiperSlide>No Photo data</SwiperSlide>
 
   console.log("dataPhoto", dataPhoto)
 
   return (
     <>
       {dataPhoto.map((i) => (
-        <div className="group relative min-h-0 h-auto" key={i.data[0].nasa_id}>
+        <SwiperSlide className="group relative min-h-0 h-auto" key={i.data[0].nasa_id}>
           <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
             <p>{i.hrefHd}</p>
             <p>{i.href}</p>
@@ -99,7 +100,7 @@ export default function PhotosNasa() {
           <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
             <p className="mb-2">{}</p>
           </div>
-        </div>
+        </SwiperSlide>
       ))}
     </>
   )
