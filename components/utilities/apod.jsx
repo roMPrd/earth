@@ -19,7 +19,7 @@ export default function Apod() {
 
   if (isLoadingApod) return <SwiperSlide>Apod Loading...</SwiperSlide>
   if (!dataApod) return <SwiperSlide>No Apod data</SwiperSlide>
-
+  return (dataApod)
   return (
       <SwiperSlide className="group relative min-h-0 h-auto">
         <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">

@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -86,7 +87,9 @@ export default function PhotosNasa() {
   if (isLoadingPhoto) return <SwiperSlide>Photo Loading...</SwiperSlide>
   if (!dataPhoto) return <SwiperSlide>No Photo data</SwiperSlide>
 
-  console.log("dataPhoto", dataPhoto)
+  // console.log("dataPhoto", dataPhoto)
+
+  return (dataPhoto)
 
   return (
     <>

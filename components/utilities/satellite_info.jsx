@@ -124,17 +124,17 @@ export default function satelliteInfo() {
   }
 
   return (
-    <div>
-      <p className="text-white">Name: {data[0].name}</p>
-      <p className="text-white">Altitude: {roundNumber(data[0].altitude)} km</p>
-      <p className="text-white">Velocity: {roundNumber(data[0].velocity)} km/h</p>
-      <p className="text-white">Visibility: {data[0].visibility}</p>
-      <p className="text-white">Latitude: {roundNumber(data[0].latitude)}</p>
-      <p className="text-white">Longitude: {roundNumber(data[0].longitude)}</p>
-      <p className="text-white">Country code: {data[1].country_code}</p>
-      <p className="text-white">Timezone: {data[1].timezone_id}</p>
-      <p className="text-white">Offset: {data[0].offset}</p>
-      <p className="text-white">Time: {data[2]}</p>
+    <div className='ml-8 text-[24px]'>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Name: {data[0].name}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Altitude: {roundNumber(data[0].altitude)} km</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Velocity: {roundNumber(data[0].velocity)} km/h</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Visibility: {data[0].visibility}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Latitude: {roundNumber(data[0].latitude)}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Longitude: {roundNumber(data[0].longitude)}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Country code: {data[1].country_code}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Timezone: {data[1].timezone_id}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Offset: {data[0].offset}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Time: {data[2]}</p>
     </div>
   )
 }

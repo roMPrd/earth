@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedTitle from "@components/animations/animatedTitle";
+import { spaceGrotesk } from "../fonts/spaceGrotesk";
 
 const texts = ["Earth", "World", "Planet", "Home", "Future"]
 const variants = {
@@ -36,11 +37,16 @@ const TextLoop = () => {
   return (
     <div className="w-full relative flex justify-center items-center">
 
-      <h1 className="mr-[0.5rem] text-2xl text-end w-[50%]">This is our</h1>
+      <h1
+        // className="mr-[0.5rem] text-2xl text-end w-[50%]"
+        className={`${spaceGrotesk.className} mr-[0.5rem] w-[50%] font-bold text-end leading-none tracking-tighter text-[20px] sm:text-[25px] md:text-[30px] lg:text-[40px]`}
+      >
+        This is our
+      </h1>
       <div className ="text-center flex items-center w-[50%]">
         <AnimatePresence>
           <motion.span
-            className="text-4xl font-bold absolute"
+            className={`absolute font-bold text-end leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
             // style={{ position: "absolute", font-size: "2.5em" }}
             key={index}
             variants={variants}
@@ -56,7 +62,7 @@ const TextLoop = () => {
               opacity: { duration: 0.5 }
             }}
             >
-            {texts[index]}
+            {texts[index].toUpperCase()}
           </motion.span>
         </AnimatePresence>
       </div>
@@ -66,7 +72,7 @@ const TextLoop = () => {
 
 const HomePage = () => {
   return (
-    <section className="relative flex justify-center items-center h-[100dvh] w-[100dvw]">
+    <section className="z-50 relative flex justify-center items-center h-[100dvh] w-[100dvw]">
       <div className="h-full w-full">
         <video
           src="assets/earth_video.mp4"

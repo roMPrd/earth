@@ -34,10 +34,14 @@ export default function Map() {
       zoom={2}
       scrollWheelZoom={false}
       style={{height: "100%", width: "100%"}}
+      className='rounded-xl'
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="
+        https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png
+        "
+        // https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
       />
       <Marker
         position={[data[0].latitude, data[0].longitude]}
@@ -52,5 +56,6 @@ export default function Map() {
     </MapContainer>
   )
 }
+
 
 // export default Map
