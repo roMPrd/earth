@@ -61,7 +61,7 @@ const TextLoop = () => {
               },
               opacity: { duration: 0.5 }
             }}
-            >
+          >
             {texts[index].toUpperCase()}
           </motion.span>
         </AnimatePresence>
