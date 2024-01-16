@@ -13,7 +13,13 @@
 
   --swiper-scrollbar-bg-color: rgba(112, 112, 112, 0.5);
   --swiper-scrollbar-drag-bg-color: #707070;
+  /* cursor: none !important; */
+
 }
+/* body iframe,
+#iFrame{
+  cursor: default !important;
+ } */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -31,6 +37,11 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+* {
+  cursor: none !important;
+  /* pointer-events: none; */
 }
 
 .hideContent {
@@ -109,7 +120,7 @@ body {
   height: var(--swiper-navigation-size) !important;
   margin-top: 0 !important;
   z-index: 10 !important;
-  cursor: pointer !important;
+  cursor: none !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,6 +130,12 @@ body {
 
 .navigationFullscreen {
   position: absolute !important;
+}
+
+.normalScreenMode {
+  width: 110% !important;
+  /* height: 60vh !important; */
+  left: -5% !important;
 }
 /* .swiper {
   width: 110%;

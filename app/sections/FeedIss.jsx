@@ -34,7 +34,7 @@ const FeedIss = () => {
       <div className="flex items-center justify-between">
 
         <AnimationLR
-          className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl"
+          className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl cursor-none"
           xStart={-180}
           xEnd={-80}
           yStart={0}
@@ -44,6 +44,7 @@ const FeedIss = () => {
           children={
             // <div className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl">
               <iframe
+                id='iFrame'
                 className="w-full aspect-video rounded-xl"
                 // width="560"
                 // height="315"

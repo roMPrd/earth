@@ -34,9 +34,10 @@ export default function Map() {
       zoom={2}
       scrollWheelZoom={false}
       style={{height: "100%", width: "100%"}}
-      className='rounded-xl'
+      className='cursorLarge rounded-xl'
     >
       <TileLayer
+        className='cursorLarge'
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="
         https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png
@@ -44,11 +45,13 @@ export default function Map() {
         // https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
       />
       <Marker
+        className='cursorLarge'
         position={[data[0].latitude, data[0].longitude]}
-        draggable={true}
+        draggable={false}
         animate={true}
       >
-        <Popup>
+
+        <Popup className='cursorLarge'>
           ISS is here!
         </Popup>
 

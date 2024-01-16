@@ -5,20 +5,20 @@ import AnimationLR from '@components/animations/animationLR';
 import AnimationSectionTitles from '@components/animations/animationSectionTitles';
 import AnimatedTitle from '@components/animations/animatedTitle';
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 import { useRef, useState, useEffect } from 'react'
 import { spaceGrotesk } from "../fonts/spaceGrotesk";
 
 // <---------- import icons ---------->
 import { SlSizeFullscreen } from "react-icons/sl";
-import { MdOutlineInfo } from "react-icons/md";
+// import { MdOutlineInfo } from "react-icons/md";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
 // <---------- core version + navigation, pagination modules ---------->
 import { Swiper, SwiperSlide } from "swiper/react";
-import {FreeMode, Navigation, Scrollbar, Pagination, Thumbs } from 'swiper/modules';
+import {FreeMode, Navigation, Scrollbar, Pagination, Autoplay } from 'swiper/modules';
 
 // <---------- import Swiper and modules styles ---------->
 import 'swiper/react';
@@ -27,6 +27,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
+import 'swiper/css/effect-fade';
 
 
 
@@ -55,13 +56,13 @@ export default function Photos() {
   const [dataPhoto, setDataPhoto] = useState(null)
   const [isLoadingPhoto, setLoadingPhoto] = useState(true)
 
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  // const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const [swiper, setSwiper] = useState(0);
   const [paginationCustom, setPaginationCustom] = useState(0);
 
   const [fullscreen, setFullscreen] = useState(false);
-  console.log("fullscreen", fullscreen)
+  // console.log("fullscreen", fullscreen)
 
   const [infoBox, setInfoBox] = useState(false);
 
@@ -73,15 +74,6 @@ export default function Photos() {
       setLoadingPhoto(false)
     })
   }, [])
-
-  // useEffect(() => {
-  //   // console.log("swiper", swiper.activeIndex)
-  //   setPaginationCustom(swiper.activeIndex)
-  //   // const pagin
-
-  // }, [swiper])
-
-
 
   if (isLoadingPhoto) return <SwiperSlide>Photo Loading...</SwiperSlide>
   if (!dataPhoto) return <SwiperSlide>No Photo data</SwiperSlide>
@@ -103,29 +95,14 @@ export default function Photos() {
           spanClassName={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
           text={["Gallery"]}
         />
-        {/* <div className='w-fit mx-auto'>
-          <h1
-            className={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
-            >
-            Gallery
-          </h1>
-        </div> */}
       </div>
 
-
-      {/* <div className="mySwiper2 w-[110%] h-[80vh] left-[-5%] border border-[--color-secondary] rounded-xl backdrop-filter backdrop-blur-xl"> */}
-
       <AnimatedTitle
-          className={"mySwiper2 border border-[--color-secondary] rounded-xl overflow-hidden " + (fullscreen ? ' fullscreenMode' : ' w-[110%] h-[60vh] left-[-5%]')}
+          className={"cursorLarge mySwiper2 border border-[--color-secondary] rounded-xl overflow-hidden " + (fullscreen ? ' fullscreenMode' : ' normalScreenMode h-[60vh]')}
           duration={1}
           scaleStart={1}
           scaleEnd={1}
-          // borderRadiusStart={'50%'}
-          // borderRadiusEnd={[ '50%', '50%','25%', '0.75rem']}
-          // widthStart={'50%'}
-          // widthEnd={[ '50%', '50%', '75%', '110%']}
           heightStart={'0vh'}
-          // heightEnd={['20vh', '40vh', '60vh', '80vh']}
           heightEnd={'60vh'}
           children={
             <>
@@ -139,45 +116,17 @@ export default function Photos() {
                 delay={1}
                 children={
                   <>
-                  {/* <div className='z-50 absolute top-[0] right-0 flex items-end'> */}
                     <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[160px]`}>
                       {paginationCustom + 1}
                     </span>
                     <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[60px]`}>
                       /6
                     </span>
-                    {/* </div> */}
                   </>
                 }
               />
 
-        {/* <AnimatedTitle
-          className="w-full h-full rounded-xl mx-auto"
-          duration={1}
-          scaleStart={1}
-          scaleEnd={1}
-          // borderRadiusStart={'50%'}
-          // borderRadiusEnd={[ '50%', '50%','25%', '0.75rem']}
-          // widthStart={'50%'}
-          // widthEnd={[ '50%', '50%', '75%', '110%']}
-          heightStart={'0%'}
-          // heightEnd={['20vh', '40vh', '60vh', '80vh']}
-          heightEnd={'100%'}
-          transformStart={'translateY(50%)'}
-          transformEnd={'translateY(0%)'}
-          // marginTopStart={'50%'}
-          // marginTopEnd={'0%'}
-          // marginBottomStart={'-50%'}
-          // marginBottomEnd={'0%'}
-          topStart={'50%'}
-          topEnd={'0%'}
-          opacityStart={1}
-          opacityEnd={1}
-          children={ */}
             <Swiper
-              // thumbs={{ swiper:
-              //   thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
-              // }}
               onClick={() => (setInfoBox(infoBox => !infoBox), console.log('infoBox', infoBox))}
               onSwiper={setSwiper}
               onSlideChange={() => {setPaginationCustom(swiper.activeIndex), console.log("swiper", swiper.activeIndex)}}
@@ -186,30 +135,22 @@ export default function Photos() {
                   nextEl: '.swiper-button-next',
                   prevEl: '.swiper-button-prev',
                 }}
-              // pagination={{
-              //   renderCustom: function (swiper, current, total) {
-              //     // className = '{`${spaceGrotesk.className} absolute top-0 right-0 lg:w-[240px] font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[240px]`}'
-              //     return current;
-              //     return '<span class="' + className + '">' + current + '</span>';
-              //   },
-              //   el: '.swiper-pagination-custom',
-              //   type: 'custom'
-              // }}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
               scrollbar={{
                 el:'.swiper-scrollbar',
                 hide: false,
                 draggable: true}}
-              modules={[Scrollbar, FreeMode, Navigation, Pagination]}
+              modules={[Scrollbar, FreeMode, Navigation, Pagination, Autoplay]}
               className="mySwiper2 w-full h-full rounded-xl"
-              // h-[100dvh] w-full p-20
-              // flex flex-col items-center
             >
 
-              {/* <SwiperSlide className="group min-h-0 h-auto"> */}
-                <SlSizeFullscreen  className='absolute top-0 left-0 text-[40px] m-4 z-[50] cursor-pointer ' onClick={() => (setFullscreen(fullscreen => !fullscreen), console.log(fullscreen))} />
+                <SlSizeFullscreen  className='cursorLarge absolute top-0 left-0 text-[40px] m-4 z-[50] cursor-pointer ' onClick={() => (setFullscreen(fullscreen => !fullscreen), console.log(fullscreen))} />
                 {/* <MdOutlineInfo className='absolute bottom-0 right-0 text-[40px] m-4 z-[50] cursor-pointer '/> */}
-                <BiChevronLeft className={"absolute m-4 z-[50] text-[5rem] top-[50%] left-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 0 ? ' opacity-25 ' : ' cursor-pointer ')} onClick={() => (swiper.slidePrev())} />
-                <BiChevronRight className={"absolute m-4 z-[50] text-[5rem] top-[50%] right-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 5 ? ' opacity-25 ' : ' cursor-pointer ')} onClick={() => (swiper.slideNext())} />
+                <BiChevronLeft className={"absolute m-4 z-[50] text-[5rem] top-[50%] left-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 0 ? ' opacity-25 ' : ' cursorLarge ')} onClick={() => (swiper.slidePrev())} />
+                <BiChevronRight className={"absolute m-4 z-[50] text-[5rem] top-[50%] right-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 5 ? ' opacity-25 ' : ' cursorLarge ')} onClick={() => (swiper.slideNext())} />
 
                 <SwiperSlide key={0} className="group relative min-h-0 h-auto">
                   {/* <---------- infoBox Title ----------> */}
@@ -235,7 +176,6 @@ export default function Photos() {
                     />
                   </div>
 
-
                   {/* <---------- infoBox Description ----------> */}
                   <div className='absolute bottom-0 w-full px-4'>
                     <AnimationLR
@@ -258,20 +198,10 @@ export default function Photos() {
                       }
                     />
                   </div>
-                  {/* <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center"> */}
-                    {/* <p className="mb-0">Astronomy Picture of the Day:</p> */}
-                    {/* <p>{dataApod.title}</p> */}
-                  {/* </div> */}
 
                   {/* <---------- Image ----------> */}
                   <img src={dataApod.hdurl} alt={dataApod.title} className="object-cover h-full w-full"/>
-                  {/* <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
-                    <p className="mb-2">{dataApod.explanation}</p>
-                    <p>{dataApod.date} / © {dataApod.copyright}</p>
-                  </div> */}
                 </SwiperSlide>
-                {/* <Apod /> */}
-              {/* </SwiperSlide> */}
 
               {dataPhoto.map((i, index) => (
                   <SwiperSlide className="group relative" key={index+1}>
@@ -294,7 +224,6 @@ export default function Photos() {
                         }
                       />
                     </div>
-
 
                     {/* <---------- infoBox Description ----------> */}
                     <div className='absolute bottom-0 w-full px-4'>
@@ -319,14 +248,7 @@ export default function Photos() {
                       />
                     </div>
 
-                    {/* <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
-                      <p>{i.data[0].title}</p>
-                      <p>{i.href}</p>
-                    </div> */}
                     <img src={i.hrefHd} alt={i.hrefHd} className="object-cover h-full w-full"/>
-                    {/* <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
-                      <p className="mb-2">{}</p>
-                    </div> */}
                   </SwiperSlide>
               ))}
 
@@ -334,8 +256,6 @@ export default function Photos() {
              </>
           }
         />
-      {/* </div> */}
-
 
       <AnimationLR
         className="flex items-center px-8 gap-8 h-20 w-[110%] left-[-5%] backdrop-filter backdrop-blur-xl border border-[--color-secondary] rounded-xl"
@@ -347,61 +267,31 @@ export default function Photos() {
         delay={1}
         children={
           <>
-            {/* <div className='flex items-center px-8 gap-8 h-20 w-[110%] left-[-5%] backdrop-filter backdrop-blur-xl border border-[--color-secondary] rounded-xl'> */}
               <div className='thumbnails flex gap-1 '>
-                {/* <Swiper
-                  onSwiper={setThumbsSwiper}
-                  // navigation={false}
-                  spaceBetween={10}
-                  slidesPerView={6}
-                  watchSlidesProgress={true}
-                  modules={[FreeMode, Navigation, Thumbs]}
-                  className="mySwiper"
-                >
-
-                  <SwiperSlide key={0}>
-                    <div className='h-[50px] w-[50px]'>
-                      <img src={dataApod.hdurl} alt={dataApod.title} className="object-cover h-full w-full"/>
-                    </div>
-                  </SwiperSlide>
-
-                  {dataPhoto.map((i, index) => (
-                    <SwiperSlide className="group relative" key={index + 1}>
-                      <div className='h-[50px] w-[50px]'>
-                        <img src={i.links[0].href} alt={i.hrefHd} className="object-cover h-full w-full"/>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-
-                </Swiper> */}
 
                 <div className='h-[50px] w-[50px]' onClick={() => swiper.slideTo(0)}>
-                  <img src={dataApod.hdurl} alt={dataApod.title} key={0} className={"object-cover h-full w-full border " + (paginationCustom === 0 ? '' : 'opacity-25 border-none')}/>
+                  <img src={dataApod.hdurl} alt={dataApod.title} key={0} className={"cursorLarge object-cover h-full w-full border " + (paginationCustom === 0 ? '' : 'opacity-25 border-none')}/>
                 </div>
 
                 {dataPhoto.map((i, index) => (
                     // <div className="group relative" key={index + 1} onClick={() => swiper.slideTo(index + 1)}>
                       <div className='h-[50px] w-[50px]'  key={index + 1} onClick={() => swiper.slideTo(index + 1)}>
-                        <img src={i.links[0].href} alt={i.hrefHd} className={"object-cover h-full w-full border " + (paginationCustom === index +1 ? '' : 'opacity-25 border-none')}/>
+                        <img src={i.links[0].href} alt={i.hrefHd} className={"cursorLarge object-cover h-full w-full border " + (paginationCustom === index +1 ? '' : 'opacity-25 border-none')}/>
                       </div>
                     // </div>
                   ))}
 
               </div>
 
-              <div className='swiper-scrollbar'></div>
+              <div className='cursorLarge swiper-scrollbar'></div>
 
               <div className='navigation flex gap-4'>
-                <div className={(fullscreen ? '' : "swiper-button-prev")}></div>
-                <div className={(fullscreen ? '' : "swiper-button-next")}></div>
+                <div className={'cursorLarge ' + (fullscreen ? '' : "swiper-button-prev")}></div>
+                <div className={'cursorLarge ' + (fullscreen ? '' : "swiper-button-next")}></div>
               </div>
-
-              {/* <p>{swiper.activeIndex === null ? '' : swiper.activeIndex}</p> */}
-            {/* </div> */}
           </>
         }
       />
-
 
     </section>
   )
