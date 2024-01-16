@@ -13,6 +13,8 @@ import { spaceGrotesk } from "../fonts/spaceGrotesk";
 // <---------- import icons ---------->
 import { SlSizeFullscreen } from "react-icons/sl";
 import { MdOutlineInfo } from "react-icons/md";
+import { BiChevronLeft } from "react-icons/bi";
+import { BiChevronRight } from "react-icons/bi";
 
 // <---------- core version + navigation, pagination modules ---------->
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -57,6 +59,11 @@ export default function Photos() {
 
   const [swiper, setSwiper] = useState(0);
   const [paginationCustom, setPaginationCustom] = useState(0);
+
+  const [fullscreen, setFullscreen] = useState(false);
+  console.log("fullscreen", fullscreen)
+
+  const [infoBox, setInfoBox] = useState(false);
 
   useEffect(() => {
     fetchHrefHd()
@@ -109,7 +116,7 @@ export default function Photos() {
       {/* <div className="mySwiper2 w-[110%] h-[80vh] left-[-5%] border border-[--color-secondary] rounded-xl backdrop-filter backdrop-blur-xl"> */}
 
       <AnimatedTitle
-          className="mySwiper2 w-[110%] h-[60vh] left-[-5%] border border-[--color-secondary] rounded-xl overflow-hidden"
+          className={"mySwiper2 border border-[--color-secondary] rounded-xl overflow-hidden " + (fullscreen ? ' fullscreenMode' : ' w-[110%] h-[60vh] left-[-5%]')}
           duration={1}
           scaleStart={1}
           scaleEnd={1}
@@ -123,7 +130,7 @@ export default function Photos() {
           children={
             <>
               <AnimationLR
-                className="z-50 absolute top-[0] right-0 flex items-end"
+                className="z-50 absolute top-0 right-0 flex items-end m-4 "
                 xStart={180}
                 xEnd={0}
                 yStart={0}
@@ -133,7 +140,7 @@ export default function Photos() {
                 children={
                   <>
                   {/* <div className='z-50 absolute top-[0] right-0 flex items-end'> */}
-                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[240px]`}>
+                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[160px]`}>
                       {paginationCustom + 1}
                     </span>
                     <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[60px]`}>
@@ -171,12 +178,13 @@ export default function Photos() {
               // thumbs={{ swiper:
               //   thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
               // }}
+              onClick={() => (setInfoBox(infoBox => !infoBox), console.log('infoBox', infoBox))}
               onSwiper={setSwiper}
               onSlideChange={() => {setPaginationCustom(swiper.activeIndex), console.log("swiper", swiper.activeIndex)}}
               // loop={true}
               navigation={{
                   nextEl: '.swiper-button-next',
-                  prevEl: '.swiper-button-prev'
+                  prevEl: '.swiper-button-prev',
                 }}
               // pagination={{
               //   renderCustom: function (swiper, current, total) {
@@ -198,33 +206,127 @@ export default function Photos() {
             >
 
               {/* <SwiperSlide className="group min-h-0 h-auto"> */}
-                <SwiperSlide key={0} className="group relative min-h-0 h-auto">
-                  <SlSizeFullscreen  className='absolute top-0 left-0 text-[40px] m-4 '/>
-                  <MdOutlineInfo className='absolute bottom-0 right-0 text-[40px] m-4 '/>
+                <SlSizeFullscreen  className='absolute top-0 left-0 text-[40px] m-4 z-[50] cursor-pointer ' onClick={() => (setFullscreen(fullscreen => !fullscreen), console.log(fullscreen))} />
+                {/* <MdOutlineInfo className='absolute bottom-0 right-0 text-[40px] m-4 z-[50] cursor-pointer '/> */}
+                <BiChevronLeft className={"absolute m-4 z-[50] text-[5rem] top-[50%] left-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 0 ? ' opacity-25 ' : ' cursor-pointer ')} onClick={() => (swiper.slidePrev())} />
+                <BiChevronRight className={"absolute m-4 z-[50] text-[5rem] top-[50%] right-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 5 ? ' opacity-25 ' : ' cursor-pointer ')} onClick={() => (swiper.slideNext())} />
 
-                  <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
-                    <p className="mb-0">Astronomy Picture of the Day:</p>
-                    <p>{dataApod.title}</p>
+                <SwiperSlide key={0} className="group relative min-h-0 h-auto">
+                  {/* <---------- infoBox Title ----------> */}
+                  <div className='absolute top-0 w-full'>
+                    <AnimationLR
+                      className={" mx-auto m-4 p-4 w-fit h-fit text-center bg-[--color-dark-transparent] backdrop-filter backdrop-blur border border-[--color-secondary] rounded-xl " + (infoBox ? '' : ' hideContent ')}
+                      xStart={0}
+                      xEnd={0}
+                      yStart={'-1rem'}
+                      yEnd={0}
+                      duration={1}
+                      delay={0}
+                      children={
+                        <>
+                          <p className={`${spaceGrotesk.className} font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                            Astronomy Picture of the Day:
+                          </p>
+                          <p className={` font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                            {dataApod.title}
+                          </p>
+                        </>
+                      }
+                    />
                   </div>
+
+
+                  {/* <---------- infoBox Description ----------> */}
+                  <div className='absolute bottom-0 w-full px-4'>
+                    <AnimationLR
+                      className={"mx-auto m-4 p-4 w-fit h-fit bg-[--color-dark-transparent] backdrop-filter backdrop-blur border border-[--color-secondary] rounded-xl " + (infoBox ? '' : ' hideContent ')}
+                      xStart={0}
+                      xEnd={0}
+                      yStart={'1rem'}
+                      yEnd={0}
+                      duration={1}
+                      delay={0}
+                      children={
+                        <>
+                          <p className={` mb-2 text-justify `}>
+                            {dataApod.explanation}
+                          </p>
+                          <p className={`${spaceGrotesk.className} text-center`}>
+                            {dataApod.date} / © {dataApod.copyright}
+                          </p>
+                        </>
+                      }
+                    />
+                  </div>
+                  {/* <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center"> */}
+                    {/* <p className="mb-0">Astronomy Picture of the Day:</p> */}
+                    {/* <p>{dataApod.title}</p> */}
+                  {/* </div> */}
+
+                  {/* <---------- Image ----------> */}
                   <img src={dataApod.hdurl} alt={dataApod.title} className="object-cover h-full w-full"/>
-                  <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
+                  {/* <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
                     <p className="mb-2">{dataApod.explanation}</p>
                     <p>{dataApod.date} / © {dataApod.copyright}</p>
-                  </div>
+                  </div> */}
                 </SwiperSlide>
                 {/* <Apod /> */}
               {/* </SwiperSlide> */}
 
               {dataPhoto.map((i, index) => (
                   <SwiperSlide className="group relative" key={index+1}>
-                    <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
-                      <p>{i.hrefHd}</p>
+                    {/* <---------- infoBox Title ----------> */}
+                    <div className='absolute top-0 w-full'>
+                      <AnimationLR
+                        className={" mx-auto m-4 p-4 w-fit h-fit text-center bg-[--color-dark-transparent] backdrop-filter backdrop-blur border border-[--color-secondary] rounded-xl " + (infoBox ? '' : ' hideContent ')}
+                        xStart={0}
+                        xEnd={0}
+                        yStart={'-1rem'}
+                        yEnd={0}
+                        duration={1}
+                        delay={0}
+                        children={
+                          <>
+                            <p className={` font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                            {i.data[0].title}
+                            </p>
+                          </>
+                        }
+                      />
+                    </div>
+
+
+                    {/* <---------- infoBox Description ----------> */}
+                    <div className='absolute bottom-0 w-full px-4'>
+                      <AnimationLR
+                        className={"mx-auto m-4 p-4 w-fit h-fit bg-[--color-dark-transparent] backdrop-filter backdrop-blur border border-[--color-secondary] rounded-xl " + (infoBox ? '' : ' hideContent ')}
+                        xStart={0}
+                        xEnd={0}
+                        yStart={'1rem'}
+                        yEnd={0}
+                        duration={1}
+                        delay={0}
+                        children={
+                          <>
+                            <p className={` mb-2 text-justify `}>
+                            {i.data[0].description}
+                            </p>
+                            <p className={`${spaceGrotesk.className} text-center`}>
+                            {i.data[0].date_created} / © {i.data[0].photographer}
+                            </p>
+                          </>
+                        }
+                      />
+                    </div>
+
+                    {/* <div className="group-hover:visible invisible absolute top-0 p-4 w-full text-center">
+                      <p>{i.data[0].title}</p>
                       <p>{i.href}</p>
-                    </div>
+                    </div> */}
                     <img src={i.hrefHd} alt={i.hrefHd} className="object-cover h-full w-full"/>
-                    <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
+                    {/* <div className="group-hover:visible invisible absolute bottom-0 p-4 w-full text-center">
                       <p className="mb-2">{}</p>
-                    </div>
+                    </div> */}
                   </SwiperSlide>
               ))}
 
@@ -287,12 +389,11 @@ export default function Photos() {
 
               </div>
 
-              <div className='swiper-scrollbar'>
+              <div className='swiper-scrollbar'></div>
 
-              </div>
               <div className='navigation flex gap-4'>
-                <div className="swiper-button-prev"></div>
-                <div className="swiper-button-next"></div>
+                <div className={(fullscreen ? '' : "swiper-button-prev")}></div>
+                <div className={(fullscreen ? '' : "swiper-button-next")}></div>
               </div>
 
               {/* <p>{swiper.activeIndex === null ? '' : swiper.activeIndex}</p> */}
