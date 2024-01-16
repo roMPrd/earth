@@ -23,15 +23,33 @@ const AnimatedTitle = (
 
   const titleAnimation = {
     animate: {
-      opacity: 1,
-      scale: 1,
+      // margin: auto,
+      opacity: props.opacityEnd,
+      scale: props.scaleEnd,
       transition : {
-        duration: 1,
-      }
+        duration: props.duration,
+        // ease: [0.2, 0.65, 0.3, 0.9],
+        ease: "linear",
+      },
+      // borderRadius: props.borderRadiusEnd,
+      width: props.widthEnd,
+      height: props.heightEnd,
+      // transform: props.transformEnd,
+      // marginTop: props.marginTopEnd,
+      // marginBottom: props.marginBottomEnd,
+      // top: props.topEnd,
     },
     initial: {
-      opacity: 0,
-      scale: 0,
+      // margin: auto,
+      opacity: props.opacityStart,
+      scale: props.scaleStart,
+      // borderRadius: props.borderRadiusStart,
+      width: props.widthStart,
+      height: props.heightStart,
+      // transform: props.transformStart,
+      // marginTop: props.marginTopStart,
+      // marginBottom: props.marginBottomStart,
+      // top: props.topStart,
     }
   };
 

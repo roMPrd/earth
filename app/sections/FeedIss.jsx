@@ -27,6 +27,10 @@ const FeedIss = () => {
         />
       </div>
 
+      <div className="absolute top-[50%] left-[50%] w-[50vw] -translate-x-2/4 -translate-y-2/4 opacity-10">
+        <img src="assets/ISS_emblem.png" alt="logo-iss" />
+      </div>
+
       <div className="flex items-center justify-between">
 
         <AnimationLR

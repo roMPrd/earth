@@ -87,6 +87,15 @@ const HomePage = () => {
       <div className="z-1 absolute w-full flex items-center justify-center text-white">
         <AnimatedTitle
           className="w-full"
+          scaleStart={0}
+          scaleEnd={1}
+          duration={1}
+          // heightStart={'100%'}
+          // heightEnd={'100%'}
+          // opacityStart={0}
+          // opacityEnd={1}
+          // transformStart={''}
+          // transformEnd={''}
           children={<TextLoop />}
         />
       </div>
