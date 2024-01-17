@@ -72,7 +72,7 @@ const TextLoop = () => {
 
 const HomePage = () => {
   return (
-    <section className="z-50 relative flex justify-center items-center h-[100dvh] w-[100dvw]">
+    <section className="z-[99] relative flex justify-center items-center h-[100dvh] w-[100dvw]">
       <div className="h-full w-full">
         <video
           src="assets/earth_video.mp4"

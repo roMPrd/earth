@@ -39,26 +39,26 @@ export default function Home() {
             circle farthest-side at var(--x, 100px) var(--y, 100px),
             #1250aa 0%,
             transparent 100%
-          );
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
-        .title {
-          font-size: 80px;
-          text-transform: uppercase;
-          transform: rotate(10deg) translateX(calc(var(--x) / 10, 0px));
-        }
-      `}
-      </style> */}
+          .title {
+            font-size: 80px;
+            text-transform: uppercase;
+            transform: rotate(10deg) translateX(calc(var(--x) / 10, 0px));
+          }
+          `}
+        </style> */}
       <HomePage />
-      <section className='w-[80%] mx-auto flex flex-col gap-20'>
+      <section className='w-[80%] mx-auto flex flex-col gap-20 mb-20'>
         <FeedIss />
         <Photos />
         <Thanks />
-        <Footer />
       </section>
+      <Footer />
     </section>
   )
 }

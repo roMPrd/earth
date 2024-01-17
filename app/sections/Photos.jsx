@@ -12,7 +12,7 @@ import { spaceGrotesk } from "../fonts/spaceGrotesk";
 
 // <---------- import icons ---------->
 import { SlSizeFullscreen } from "react-icons/sl";
-// import { MdOutlineInfo } from "react-icons/md";
+import { MdOutlineInfo } from "react-icons/md";
 import { BiChevronLeft } from "react-icons/bi";
 import { BiChevronRight } from "react-icons/bi";
 
@@ -33,8 +33,8 @@ import 'swiper/css/effect-fade';
 
 export async function fetchHrefHd() {
   const res = await fetch('https://images-api.nasa.gov/search?q=earth&description=International%Space%Station&media_type=image')
-  console.log("x-rate-limit", res.headers)
-  console.log("x-rate-limit", res.headers.get('x-rate-limit-remaining'))
+  // console.log("x-rate-limit", res.headers)
+  // console.log("x-rate-limit", res.headers.get('x-rate-limit-remaining'))
   const data = await res.json()
   const photoShuffled = data.collection.items.sort(() => Math.random() - 0.5).slice(0, 5)
   const dataPhoto = await photoShuffled.map(async (i) => {
@@ -78,7 +78,7 @@ export default function Photos() {
   if (isLoadingPhoto) return <SwiperSlide>Photo Loading...</SwiperSlide>
   if (!dataPhoto) return <SwiperSlide>No Photo data</SwiperSlide>
 
-  console.log("dataPhoto", dataPhoto)
+  // console.log("dataPhoto", dataPhoto)
 
   // console.log('useState', swiper)
 
@@ -127,9 +127,9 @@ export default function Photos() {
               />
 
             <Swiper
-              onClick={() => (setInfoBox(infoBox => !infoBox), console.log('infoBox', infoBox))}
+              onClick={() => (setInfoBox(infoBox => !infoBox))}
               onSwiper={setSwiper}
-              onSlideChange={() => {setPaginationCustom(swiper.activeIndex), console.log("swiper", swiper.activeIndex)}}
+              onSlideChange={() => {setPaginationCustom(swiper.activeIndex)}}
               // loop={true}
               navigation={{
                   nextEl: '.swiper-button-next',
@@ -147,8 +147,8 @@ export default function Photos() {
               className="mySwiper2 w-full h-full rounded-xl"
             >
 
-                <SlSizeFullscreen  className='cursorLarge absolute top-0 left-0 text-[40px] m-4 z-[50] cursor-pointer ' onClick={() => (setFullscreen(fullscreen => !fullscreen), console.log(fullscreen))} />
-                {/* <MdOutlineInfo className='absolute bottom-0 right-0 text-[40px] m-4 z-[50] cursor-pointer '/> */}
+                <SlSizeFullscreen  className='cursorLarge absolute top-0 left-0 text-[40px] m-4 z-[50]' onClick={() => (setFullscreen(fullscreen => !fullscreen))} />
+                <MdOutlineInfo className='cursorLarge absolute bottom-0 right-0 text-[40px] m-4 z-[50]' onClick={() => (setInfoBox(infoBox => !infoBox))}/>
                 <BiChevronLeft className={"absolute m-4 z-[50] text-[5rem] top-[50%] left-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 0 ? ' opacity-25 ' : ' cursorLarge ')} onClick={() => (swiper.slidePrev())} />
                 <BiChevronRight className={"absolute m-4 z-[50] text-[5rem] top-[50%] right-0 " + (fullscreen ? "" : 'hidden') + (paginationCustom === 5 ? ' opacity-25 ' : ' cursorLarge ')} onClick={() => (swiper.slideNext())} />
 

@@ -45,7 +45,7 @@ const FeedIss = () => {
             // <div className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl">
               <iframe
                 id='iFrame'
-                className="w-full aspect-video rounded-xl"
+                className="iFrame w-full aspect-video rounded-xl"
                 // width="560"
                 // height="315"
                 src="https://www.youtube.com/embed/jPTD2gnZFUw?autoplay=1&si=HbMIjeYZOStV5va_"
