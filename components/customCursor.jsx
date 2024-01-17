@@ -53,10 +53,10 @@ const CustomCursor = () => {
 
     // <---------- Remove Custom Cursor when out of page ---------->
     document.addEventListener('mouseover', function() {
-      document.getElementById('mouseCursor').style.display = 'block';
+      document.getElementById('mouseCursor').classList.remove('hideContent');
     });
     document.addEventListener('mouseleave', function() {
-      document.getElementById('mouseCursor').style.display = 'none';
+      document.getElementById('mouseCursor').classList.add('hideContent');
     });
 
     // <---------- Remove Custom Cursor when on iframe ---------->
