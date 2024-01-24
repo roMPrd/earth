@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${syne.className} no-scrollbar [pointer-events-none]`}>
+      <body className={`${syne.className} relative no-scrollbar [pointer-events-none]`}>
         <CustomCursor />
         {children}
       </body>

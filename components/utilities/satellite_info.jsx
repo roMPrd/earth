@@ -35,8 +35,8 @@ export default function satelliteInfo() {
     // }, 5000)
 
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
+  // if (isLoading) return <p>Loading...</p>
+  // if (!data) return <p>No data</p>
 
   // const data = setInterval(() => {
   //   fetchCoordinates()
@@ -114,8 +114,17 @@ export default function satelliteInfo() {
   //   }, 5000)
   // }, [])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
+  if (isLoading) return (
+    <div className='ml-8 flex justify-center items-center min-h-[23rem]'>
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+  if (!data) return (
+    <div className='ml-8 flex justify-center items-center min-h-[23rem]'>
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+
   // if (isLoadingCoordinates) return <p>Loading...</p>
   // if (!dataCoordinates) return <p>No dataCoordinates</p>
 
@@ -124,17 +133,17 @@ export default function satelliteInfo() {
   }
 
   return (
-    <div className='ml-8 text-[24px]'>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Name: {data[0].name}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Altitude: {roundNumber(data[0].altitude)} km</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Velocity: {roundNumber(data[0].velocity)} km/h</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Visibility: {data[0].visibility}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Latitude: {roundNumber(data[0].latitude)}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Longitude: {roundNumber(data[0].longitude)}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Country code: {data[1].country_code}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Timezone: {data[1].timezone_id}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Offset: {data[0].offset}</p>
-      <p className="text-white backdrop-filter backdrop-blur-xl w-fit">Time: {data[2]}</p>
+    <div className='ml-8 text-[1.5rem] min-h-[23rem]'>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Name: </span> {data[0].name}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Altitude: </span> {roundNumber(data[0].altitude)} km</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Velocity: </span> {roundNumber(data[0].velocity)} km/h</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Visibility: </span> {data[0].visibility}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Latitude: </span> {roundNumber(data[0].latitude)}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Longitude: </span> {roundNumber(data[0].longitude)}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Country code :</span> {data[1].country_code}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Timezone: </span> {data[1].timezone_id}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Offset: </span> {data[0].offset}</p>
+      <p className="text-white backdrop-filter backdrop-blur-xl w-fit"> <span className='text-[--color-secondary]'>Time: </span> {data[2]}</p>
     </div>
   )
 }

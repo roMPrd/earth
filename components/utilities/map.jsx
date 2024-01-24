@@ -21,11 +21,20 @@ export default function Map() {
         setData(data)
         setLoading(false)
       })
+      .catch((err) => console.log('Map fetch error:', err.message))
     }, 5000)
   }, [])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No data</p>
+  if (isLoading) return (
+    <div id="" className="w-full h-full aspect-video text-center flex justify-center items-center">
+      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+  if (!data) return (
+    <div id="" className="w-full h-full aspect-video text-center flex justify-center items-center">
+      <p>No data</p>
+    </div>
+  )
 
 
   return (

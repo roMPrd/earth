@@ -80,7 +80,7 @@ const FeedIss = () => {
 
       <div className="flex items-center justify-between">
         <AnimationLR
-          className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl backdrop-filter backdrop-blur-xl "
+          className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl "
           xStart={-180}
           xEnd={-80}
           yStart={80}

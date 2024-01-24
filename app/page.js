@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section ref={heroRef} className=' before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_10px)_var(--y,_10px),_var(--color-secondary)_0%,_transparent_100%)] before:opacity-40'>
+    <section ref={heroRef} className='custom-scrollbar before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_10px)_var(--y,_10px),_var(--color-secondary)_0%,_transparent_100%)] before:opacity-40'>
      {/* <style jsx>{`
         .hero {
           height: 100vh;
