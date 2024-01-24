@@ -194,23 +194,25 @@ body {
   /* Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-secondary) transparent;
+    scrollbar-color: var(--color-secondary) var(--foreground-rgb);
   }
 
   /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    /* padding: 5px; */
-    width: 5px;
+  ::-webkit-scrollbar {
+    padding: 5px;
+    width: 10px;
   }
 
-  *::-webkit-scrollbar-track {
-    background: transparent;
+  ::-webkit-scrollbar-track {
+    background: var(--foreground-rgb);
   }
 
-  *::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background-color: var(--color-secondary);
     border-radius: 12px;
-    /* padding: 5px; */
+    background-clip: padding-box;
+    padding: 5px;
+    border: 2px solid transparent;
   }
 
 @layer utilities {

@@ -92,7 +92,7 @@ export default function Photos() {
           duration={0.7}
           staggerChildren={0.2}
           divClassName="w-fit mx-auto backdrop-filter backdrop-blur-xl"
-          spanClassName={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
+          spanClassName={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
           text={["Gallery"]}
         />
       </div>

@@ -6,13 +6,36 @@ import SatelliteInfo from "@components/utilities/satellite_info";
 import { spaceGrotesk } from "../fonts/spaceGrotesk";
 import AnimationLR from "@components/animations/animationLR";
 import AnimationSectionTitles from "@components/animations/animationSectionTitles";
-
+import { useEffect, useState } from "react";
 
 const FeedIss = () => {
 
   const MapWithNoSSR = dynamic(() => import("@components/utilities/map"), {
     ssr: false
   });
+
+  // const screen = {
+  //   width: window.innerWidth,
+  //   height: window.innerHeight,
+  // }
+
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    function watchWidth() {
+        setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", watchWidth);
+
+    //  Call right away so state gets updated with initial window size
+    setWindowWidth(window.innerWidth);
+    console.log("windowWidth", windowWidth)
+
+    return function () {
+        window.removeEventListener("resize", watchWidth);
+    };
+  }, []);
 
   return (
 
@@ -22,7 +45,7 @@ const FeedIss = () => {
           duration={0.7}
           staggerChildren={0.2}
           divClassName="w-fit mx-auto flex gap-4"
-          spanClassName={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
+          spanClassName={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
           text={["International", "Space", "Station"]}
         />
       </div>
@@ -31,15 +54,15 @@ const FeedIss = () => {
         <img src="assets/ISS_emblem.png" alt="logo-iss" />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex lg:flex-row flex-col gap-4 lg:gap-0 items-center justify-between">
 
         <AnimationLR
-          className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl cursor-none"
+          className="z-50 w-[110%] lg:w-[75%] border border-[--color-secondary] shadow-xl rounded-xl cursor-none"
           xStart={-180}
-          xEnd={-80}
+          xEnd={windowWidth < 1024 ? '0' : '-10%'}
           yStart={0}
           yEnd={0}
-          duration={2}
+          duration={windowWidth < 1024 ? 1 : 2}
           delay={0}
           children={
             // <div className="z-50 w-[75%] -translate-x-20 border border-[--color-secondary] shadow-xl rounded-xl">
@@ -60,17 +83,17 @@ const FeedIss = () => {
         />
 
         <AnimationLR
-          className="w-[45%]"
-          xStart={100}
+          className="lg:w-[45%] md:mt-10"
+          xStart={windowWidth < 1024 ? '-180px' : '180px'}
           xEnd={0}
           yStart={0}
           yEnd={0}
-          duration={1}
+          duration={windowWidth < 1024 ? 1 : 2}
           delay={0.2}
           children={
             <h1
               // className="text-[18px] md:text-[40px] font-bold text-center"
-              className={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
+              className={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
             >
             <span className='text-red-600'>●</span> Live Feed
             </h1>
@@ -78,35 +101,13 @@ const FeedIss = () => {
         />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col lg:flex-row-reverse gap-4 lg:gap-0 items-center justify-between ">
         <AnimationLR
-          className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl "
-          xStart={-180}
-          xEnd={-80}
-          yStart={80}
-          yEnd={80}
-          duration={1}
-          delay={0.2}
-          children={
-            <>
-            {/* <div className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl"> */}
-              <h1
-                // className="text-[18px] md:text-[40px] font-bold text-center"
-                className={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[40px] sm:text-[45px] md:text-[60px] lg:text-[80px]`}
-                >
-                Live Tracking
-              </h1>
-              <SatelliteInfo className="w-[100%] h-full"/>
-            {/* </div> */}
-            </>
-          }
-        />
-        <AnimationLR
-          className="w-[65%] translate-x-20 translate-y-20 border border-[--color-secondary] shadow-xl rounded-xl backdrop-filter backdrop-blur-xl"
-          xStart={180}
-          xEnd={80}
-          yStart={80}
-          yEnd={80}
+          className="w-[110%] lg:w-[65%] border border-[--color-secondary] shadow-xl rounded-xl backdrop-filter backdrop-blur-xl"
+          xStart={windowWidth < 1024 ? '180px' : '180px'}
+          xEnd={windowWidth < 1024 ? '0' : '10%'}
+          yStart={windowWidth < 1024 ? '0px' : '80px'}
+          yEnd={windowWidth < 1024 ? '0px' : '80px'}
           duration={1}
           delay={0}
           children={
@@ -118,6 +119,28 @@ const FeedIss = () => {
                   />
               </div>
             // </div>
+          }
+        />
+        <AnimationLR
+          className="z-50 w-[110%] lg:w-auto lg:p-5 rounded-xl flex flex-col items-center justify-center gap-4"
+          xStart={windowWidth < 1024 ? '180px' : '-180px'}
+          xEnd={windowWidth < 1024 ? '0' : '-10%'}
+          yStart={windowWidth < 1024 ? '0px' : '80px'}
+          yEnd={windowWidth < 1024 ? '0px' : '80px'}
+          duration={1}
+          delay={0.2}
+          children={
+            <>
+            {/* <div className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl"> */}
+              <h1
+                // className="text-[18px] md:text-[40px] font-bold text-center"
+                className={`${spaceGrotesk.className} w-fit backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
+                >
+                Live Tracking
+              </h1>
+              <SatelliteInfo className="w-[110%] h-full"/>
+            {/* </div> */}
+            </>
           }
         />
       </div>
