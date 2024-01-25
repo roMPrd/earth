@@ -92,7 +92,7 @@ export default function Photos() {
           duration={0.7}
           staggerChildren={0.2}
           divClassName="w-fit mx-auto backdrop-filter backdrop-blur-xl"
-          spanClassName={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
+          spanClassName={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[50px] lg:text-[65px]`}
           text={["Gallery"]}
         />
       </div>
@@ -108,7 +108,7 @@ export default function Photos() {
             <>
               <AnimationLR
                 className="z-50 absolute top-0 right-0 flex items-end m-4 "
-                xStart={180}
+                xStart={100}
                 xEnd={0}
                 yStart={0}
                 yEnd={0}
@@ -116,10 +116,10 @@ export default function Photos() {
                 delay={1}
                 children={
                   <>
-                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[160px]`}>
+                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[3rem] md:text-[4rem] lg:text-[5rem]`}>
                       {paginationCustom + 1}
                     </span>
-                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[] text-[40px] sm:text-[45px] md:text-[60px] lg:text-[60px]`}>
+                    <span className={`${spaceGrotesk.className} leading-none font-bold text-[1.5rem] md:text-[2rem] lg:text-[2.5rem]`}>
                       /6
                     </span>
                   </>
@@ -165,10 +165,10 @@ export default function Photos() {
                       delay={0}
                       children={
                         <>
-                          <p className={`${spaceGrotesk.className} font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                          <p className={`${spaceGrotesk.className} font-bold text-[1.5rem] lg:text[2rem] `}>
                             Astronomy Picture of the Day:
                           </p>
-                          <p className={` font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                          <p className={` font-bold text-[1.5rem] lg:text[2rem] `}>
                             {dataApod.title}
                           </p>
                         </>
@@ -188,10 +188,10 @@ export default function Photos() {
                       delay={0}
                       children={
                         <>
-                          <p className={` mb-2 text-justify `}>
+                          <p className={` mb-2 text-justify text-[0.7rem] lg:text[1rem]`}>
                             {dataApod.explanation}
                           </p>
-                          <p className={`${spaceGrotesk.className} text-center`}>
+                          <p className={`${spaceGrotesk.className} text-center text-[0.7rem] lg:text[1rem]`}>
                             {dataApod.date} / © {dataApod.copyright}
                           </p>
                         </>
@@ -217,7 +217,7 @@ export default function Photos() {
                         delay={0}
                         children={
                           <>
-                            <p className={` font-bold text-[] text-[30px] sm:text-[30px] md:text-[30px] lg:text-[30px]`}>
+                            <p className={` font-bold text-[1.5rem] lg:text[2rem] `}>
                             {i.data[0].title}
                             </p>
                           </>
@@ -237,11 +237,11 @@ export default function Photos() {
                         delay={0}
                         children={
                           <>
-                            <p className={` mb-2 text-justify `}>
-                            {i.data[0].description}
+                            <p className={` mb-2 text-justify text-[0.7rem] lg:text[1rem]`}>
+                              {i.data[0].description}
                             </p>
-                            <p className={`${spaceGrotesk.className} text-center`}>
-                            {i.data[0].date_created} / © {i.data[0].photographer}
+                            <p className={`${spaceGrotesk.className} text-center text-[0.7rem] lg:text[1rem] `}>
+                              {i.data[0].date_created} / © {i.data[0].photographer}
                             </p>
                           </>
                         }
@@ -258,7 +258,7 @@ export default function Photos() {
         />
 
       <AnimationLR
-        className="flex items-center px-8 gap-8 h-20 w-[110%] left-[-5%] backdrop-filter backdrop-blur-xl border border-[--color-secondary] rounded-xl"
+        className="flex justify-center items-center px-8 gap-8 h-20 w-[110%] left-[-5%] backdrop-filter backdrop-blur-xl border border-[--color-secondary] rounded-xl"
         xStart={0}
         xEnd={0}
         yStart={-100}
@@ -283,9 +283,9 @@ export default function Photos() {
 
               </div>
 
-              <div className='cursorLarge swiper-scrollbar'></div>
+              <div className='cursorLarge swiper-scrollbar hidden md:block'></div>
 
-              <div className='navigation flex gap-4'>
+              <div className='navigation gap-4 hidden md:flex'>
                 <div className={'cursorLarge ' + (fullscreen ? '' : "swiper-button-prev")}></div>
                 <div className={'cursorLarge ' + (fullscreen ? '' : "swiper-button-next")}></div>
               </div>

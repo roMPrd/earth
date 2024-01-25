@@ -24,7 +24,7 @@ export default function Thanks() {
         />
       </div>
 
-      <div className="absolute bottom-0 translate-y-1/2 h-fit w-full flex justify-around items-center">
+      <div className="absolute bottom-0 translate-y-1/2 w-full flex justify-around items-center gap-4 p-4">
         {images.map((image, index) => (
           <AnimationLR
             xStart={0}
@@ -34,9 +34,9 @@ export default function Thanks() {
             duration={0.5}
             delay={ index * 0.3 }
             key={index}
-            className="h-fit w-fit"
+            className="h-full"
             children={
-              <div className="[bg-[--color-dark]] hover:scale-[1.2] backdrop-filter backdrop-blur-xl h-[200px] w-[200px] ease-linear hover:border border-[--color-secondary] rounded-full overflow-hidden flex justify-center items-center z-50 ">
+              <div className="[bg-[--color-dark]] hover:scale-[1.2] backdrop-filter backdrop-blur-xl max-h-[200px] aspect-square ease-linear hover:border border-[--color-secondary] rounded-full overflow-hidden flex justify-center items-center z-50 ">
                 {image}
               </div>
             }

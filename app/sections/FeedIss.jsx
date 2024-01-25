@@ -45,7 +45,7 @@ const FeedIss = () => {
           duration={0.7}
           staggerChildren={0.2}
           divClassName="w-fit mx-auto flex gap-4"
-          spanClassName={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
+          spanClassName={`${spaceGrotesk.className} backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[50px] lg:text-[65px]`}
           text={["International", "Space", "Station"]}
         />
       </div>
@@ -83,7 +83,7 @@ const FeedIss = () => {
         />
 
         <AnimationLR
-          className="lg:w-[45%] md:mt-10"
+          className="lg:w-[45%]"
           xStart={windowWidth < 1024 ? '-180px' : '180px'}
           xEnd={0}
           yStart={0}
@@ -93,7 +93,7 @@ const FeedIss = () => {
           children={
             <h1
               // className="text-[18px] md:text-[40px] font-bold text-center"
-              className={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
+              className={`${spaceGrotesk.className} font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[50px] lg:text-[65px]`}
             >
             <span className='text-red-600'>●</span> Live Feed
             </h1>
@@ -134,7 +134,7 @@ const FeedIss = () => {
             {/* <div className="z-50 -translate-x-20 translate-y-20 w-auto p-5 rounded-xl"> */}
               <h1
                 // className="text-[18px] md:text-[40px] font-bold text-center"
-                className={`${spaceGrotesk.className} w-fit backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[60px] lg:text-[80px]`}
+                className={`${spaceGrotesk.className} w-fit backdrop-filter backdrop-blur-xl font-bold text-center leading-none tracking-tighter text-[30px] sm:text-[40px] md:text-[50px] lg:text-[65px]`}
                 >
                 Live Tracking
               </h1>
