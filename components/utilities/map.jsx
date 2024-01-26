@@ -4,7 +4,8 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 import { useState, useEffect } from 'react'
-
+// import fetchWTIA from './fetchWTIA';
+import fetchWTIA from '@components/utilities/fetchWTIA'
 
 export default function Map() {
   // const position = await fetch_position()
@@ -16,7 +17,8 @@ export default function Map() {
   useEffect(() => {
     setInterval(() => {
       // fetch('/api/')
-      fetch('https://earth-livid.vercel.app/api/')
+      // fetch('https://earth-livid.vercel.app/api/')
+      fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
         setData(data)

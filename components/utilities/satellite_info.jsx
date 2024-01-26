@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-// import fetchWTIA from '@components/utilities/fetchWTIA'
+import fetchWTIA from '@components/utilities/fetchWTIA'
 
 
 export default function satelliteInfo() {
@@ -12,7 +12,8 @@ export default function satelliteInfo() {
   useEffect(() => {
     setInterval(() => {
       // fetch('/api/')
-      fetch('https://earth-livid.vercel.app/api/')
+      // fetch('https://earth-livid.vercel.app/api/')
+      fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
         setData(data)
