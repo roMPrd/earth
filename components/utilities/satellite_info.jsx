@@ -11,7 +11,8 @@ export default function satelliteInfo() {
 
   useEffect(() => {
     setInterval(() => {
-      fetch('/api/')
+      // fetch('/api/')
+      fetch('https://earth-livid.vercel.app/api/')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
