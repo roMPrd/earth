@@ -67,8 +67,8 @@ import { NextResponse } from 'next/server';
 
     // Check the rate limit
     // console.log("headers", response.headers)
-    // console.log("x-rate-limit", response.headers.get('x-rate-limit-remaining'))
-    // console.log("x-rate-limit-Coordinates", responseCoordonate.headers.get('x-rate-limit-remaining'))
+    console.log("x-rate-limit", response.headers.get('x-rate-limit-remaining'))
+    console.log("x-rate-limit-Coordinates", responseCoordonate.headers.get('x-rate-limit-remaining'))
 
 
     return new NextResponse(JSON.stringify([data, dataCoordinates, timestamp]), { status: 200 });
