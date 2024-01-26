@@ -53,7 +53,7 @@ export default function Home() {
           `}
         </style> */}
       <HomePage />
-      <section className='w-[80%] mx-auto flex flex-col gap-20 mb-20'>
+      <section className='w-[80%] mx-auto flex flex-col gap-10 mb-20'>
         <FeedIss />
         <Photos />
         <Thanks />

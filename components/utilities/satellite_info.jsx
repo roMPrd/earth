@@ -115,12 +115,12 @@ export default function satelliteInfo() {
   // }, [])
 
   if (isLoading) return (
-    <div className='ml-8 flex justify-center items-center min-h-[23rem]'>
+    <div className='ml-8 flex justify-center items-center min-h-[10rem] lg:min-h-[23rem]'>
       <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
   )
   if (!data) return (
-    <div className='ml-8 flex justify-center items-center min-h-[23rem]'>
+    <div className='ml-8 flex justify-center items-center min-h-[10rem] lg:min-h-[23rem]'>
       <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
   )

@@ -69,6 +69,7 @@ const FeedIss = () => {
               <iframe
                 id='iFrame'
                 className="w-full aspect-video rounded-xl"
+                muted={true}
                 // width="560"
                 // height="315"
                 src="https://www.youtube.com/embed/jPTD2gnZFUw?autoplay=1&si=HbMIjeYZOStV5va_"
