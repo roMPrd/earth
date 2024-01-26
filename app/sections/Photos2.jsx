@@ -31,6 +31,8 @@ import 'swiper/css/effect-fade';
 
 
 
+
+
 export async function fetchHrefHd() {
   const res = await fetch('https://images-api.nasa.gov/search?q=earth&description=International%Space%Station&media_type=image')
   // console.log("x-rate-limit", res.headers)
