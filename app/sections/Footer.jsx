@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
 
         <div className="w-fit h-fit p-4">
-          <p>© 2023, Romain DELIMAL</p>
+          <p>© 2024, Romain DELIMAL</p>
         </div>
       </section>
 
