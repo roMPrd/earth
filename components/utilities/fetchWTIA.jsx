@@ -66,7 +66,7 @@ import { NextResponse } from 'next/server';
     const timestamp = new Date(data.timestamp * 1000).toUTCString();
 
     // Check the rate limit
-    // console.log("headers", response.headers)
+    console.log("headers", response.headers)
     console.log("x-rate-limit", response.headers.get('x-rate-limit-remaining'))
     console.log("x-rate-limit-Coordinates", responseCoordonate.headers.get('x-rate-limit-remaining'))
 
