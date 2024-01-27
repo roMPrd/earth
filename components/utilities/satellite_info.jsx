@@ -16,12 +16,13 @@ export default function satelliteInfo() {
       fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data)
         setData(data)
         setLoading(false)
       })
       // convert seconds to milliseconds, then to UTC format
       // const timestamp = new Date(data.timestamp * 1000).toUTCString();
-    }, 5000)
+    }, 10000)
   }, [])
 
     // setInterval(() => {
@@ -122,8 +123,9 @@ export default function satelliteInfo() {
     </div>
   )
   if (!data) return (
-    <div className='ml-8 flex justify-center items-center min-h-[10rem] lg:min-h-[23rem]'>
+    <div className='ml-8 flex flex-col justify-center items-center min-h-[10rem] lg:min-h-[23rem]'>
       <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <p>No data</p>
     </div>
   )
 

@@ -50,16 +50,64 @@
 
 //   return (data, dataCoordinates, timestamp)
 // }
+
+
+
+
 import { NextResponse } from 'next/server';
 
  export default async function fetchWTIA() {
 
+
+  // fetch('https://api.wheretheiss.at/v1/satellites/25544', { next: { revalidate: 10 } })
+  // .then((res) => {
+  //   if (res.ok) {
+  //     console.log("resTotal", res.headers)
+  //     console.log("x-rate-limit", res.headers.get('X-Rate-Limit'))
+  //     return res.json()
+  //   }
+  //   console.log('Map fetch Iss error status:', res.status)
+  //   return Promise.reject(res)
+  // })
+  // .then((data) => {
+  //   fetch(`https://api.wheretheiss.at/v1/coordinates/${data.latitude},${data.longitude}`, { next: { revalidate: 10 } })
+  //   .then((resCoordinates) => {
+  //     if (resCoordinates.ok) {
+  //       // console.log("resCoordinates", resCoordinates.headers)
+  //       return resCoordinates.json()
+  //     }
+  //     console.log('Map fetch Coordinates error status:', resCoordinates.status)
+  //     return Promise.reject(res)
+  //   })
+  //   .then ((dataCoordinates) => {
+  //     console.log("dataCoordinates", dataCoordinates)
+  //     return dataCoordinates
+  //   })
+  //   .catch((err) => {
+  //     console.log('Map fetch coordinates error:', err.message)
+  //   })
+
+  //   console.log("dataIss", data)
+  //   return data
+
+  // })
+  // .catch((err) => {
+  //   console.log('Map fetch Iss error:', err.message)
+  // })
+
+  // return Promise.all(data, dataCoordinates)
+
+  // return [data, dataCoordinates, timestamp]
+
+
   try {
 
-    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544', { next: { revalidate: 5 } })
+    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544', { next: { revalidate: 10 } })
     const data = await response.json()
 
-    const responseCoordonate = await fetch(`https://api.wheretheiss.at/v1/coordinates/${data.latitude},${data.longitude}`, { next: { revalidate: 5 } })
+    await Promise.all([response, data])
+
+    const responseCoordonate = await fetch(`https://api.wheretheiss.at/v1/coordinates/${data.latitude},${data.longitude}`, { next: { revalidate: 10 } })
     const dataCoordinates = await responseCoordonate.json()
 
     // convert seconds to milliseconds, then to UTC format
@@ -67,8 +115,8 @@ import { NextResponse } from 'next/server';
 
     // Check the rate limit
     // console.log("headers", response.headers)
-    console.log("x-rate-limit", response.headers.get('x-rate-limit-remaining'))
-    console.log("x-rate-limit-Coordinates", responseCoordonate.headers.get('x-rate-limit-remaining'))
+    // console.log("x-rate-limit", response.headers.get('x-rate-limit-remaining'))
+    // console.log("x-rate-limit-Coordinates", responseCoordonate.headers.get('x-rate-limit-remaining'))
 
 
     return new NextResponse(JSON.stringify([data, dataCoordinates, timestamp]), { status: 200 });

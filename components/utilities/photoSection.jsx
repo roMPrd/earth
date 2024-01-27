@@ -37,6 +37,9 @@ export async function fetchHrefHd() {
   // console.log("x-rate-limit", res.headers.get('x-rate-limit-remaining'))
   const data = await res.json()
   const photoShuffled = data.collection.items.sort(() => Math.random() - 0.5).slice(0, 5)
+
+  await Promise.all([res, data, photoShuffled])
+
   const dataPhoto = await photoShuffled.map(async (i) => {
     const resHref = await fetch(`${i.href}`)
     const dataHref = await resHref.json()

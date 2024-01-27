@@ -21,11 +21,12 @@ export default function Map() {
       fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
+        console.log("data from map", data)
         setData(data)
         setLoading(false)
       })
-      .catch((err) => console.log('Map fetch error:', err.message))
-    }, 5000)
+      .catch((err) => console.log('Map fetch error from map:', err.message))
+    }, 10000)
   }, [])
 
   if (isLoading) return (
@@ -34,7 +35,8 @@ export default function Map() {
     </div>
   )
   if (!data) return (
-    <div id="" className="w-full h-full aspect-video text-center flex justify-center items-center">
+    <div className='w-full h-full aspect-video text-center flex flex-col justify-center items-center'>
+      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
       <p>No data</p>
     </div>
   )
