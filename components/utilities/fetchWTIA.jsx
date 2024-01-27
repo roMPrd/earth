@@ -53,10 +53,11 @@
 
 
 
-
+import { cache } from 'react'
 import { NextResponse } from 'next/server';
 
- export default async function fetchWTIA() {
+const fetchWTIA = cache(async () => {
+//  export default async function fetchWTIA() {
 
 
   // fetch('https://api.wheretheiss.at/v1/satellites/25544', { next: { revalidate: 10 } })
@@ -102,12 +103,12 @@ import { NextResponse } from 'next/server';
 
   try {
 
-    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544', { next: { revalidate: 10 } })
+    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544')
     const data = await response.json()
 
     await Promise.all([response, data])
 
-    const responseCoordonate = await fetch(`https://api.wheretheiss.at/v1/coordinates/${data.latitude},${data.longitude}`, { next: { revalidate: 10 } })
+    const responseCoordonate = await fetch(`https://api.wheretheiss.at/v1/coordinates/${data.latitude},${data.longitude}`)
     const dataCoordinates = await responseCoordonate.json()
 
     // convert seconds to milliseconds, then to UTC format
@@ -124,4 +125,6 @@ import { NextResponse } from 'next/server';
     return new NextResponse.json('Fetch error', { status: 500 });
   }
 
- }
+})
+
+export default fetchWTIA
