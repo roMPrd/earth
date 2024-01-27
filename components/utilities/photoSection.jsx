@@ -42,6 +42,7 @@ export async function fetchHrefHd() {
 
   const dataPhoto = await photoShuffled.map(async (i) => {
     const resHref = await fetch(`${i.href}`)
+    await Promise.all([resHref])
     const dataHref = await resHref.json()
     i['hrefHd'] = dataHref[2]
     return i
