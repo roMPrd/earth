@@ -3,7 +3,9 @@
 import AnimationSectionTitles from '@components/animations/animationSectionTitles';
 import PhotoSection from '@components/utilities/photoSection';
 
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+// import { spaceGrotesk } from "../fonts/spaceGrotesk";
+import { spaceGrotesk } from "../../public/fonts/spaceGrotesk";
+
 
 
 export default function Photos() {

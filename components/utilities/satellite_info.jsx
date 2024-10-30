@@ -16,10 +16,18 @@ export default function satelliteInfo() {
       fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data)
-        setData(data)
-        setLoading(false)
+        if (!data[0].ok) {
+          // console.log("ERROR 429 FROM SAT INFO", data[0].status)
+          throw Error(data.statusText);
+        }
+        else {
+          // console.log("data", data)
+          setData(data)
+          setLoading(false)
+        }
       })
+      .catch((err) => console.log('Map fetch error from sat info:', err.message))
+
       // convert seconds to milliseconds, then to UTC format
       // const timestamp = new Date(data.timestamp * 1000).toUTCString();
     }, 10000)

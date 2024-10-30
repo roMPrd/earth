@@ -3,7 +3,10 @@
 
 import dynamic from "next/dynamic";
 import SatelliteInfo from "@components/utilities/satellite_info";
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+
+// import { spaceGrotesk } from "../fonts/spaceGrotesk";
+import { spaceGrotesk } from "../../public/fonts/spaceGrotesk";
+
 import AnimationLR from "@components/animations/animationLR";
 import AnimationSectionTitles from "@components/animations/animationSectionTitles";
 import { useEffect, useState } from "react";
@@ -72,11 +75,12 @@ const FeedIss = () => {
                 muted={true}
                 // width="560"
                 // height="315"
-                src="https://www.youtube.com/embed/jPTD2gnZFUw?autoplay=1&si=HbMIjeYZOStV5va_"
+                src="https://www.youtube.com/embed/O9mYwRlucZY?si=XtIK6-ehYr8ujAMH&autoplay=1&mute=1"
                 title="YouTube video player"
                 // frameBorder="0"
-                autoPlay="1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                // autoPlay="1"
+                // mute="1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; mute"
                 allowFullScreen>
               </iframe>
             // {/* </div> */}

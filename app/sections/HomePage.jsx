@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedTitle from "@components/animations/animatedTitle";
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+// import { spaceGrotesk } from "../fonts/spaceGrotesk";
+import { spaceGrotesk } from "../../public/fonts/spaceGrotesk";
+
 
 const texts = ["Earth", "World", "Planet", "Home", "Future"]
 const variants = {

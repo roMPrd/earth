@@ -1,6 +1,8 @@
 import AnimationSectionTitles from '@components/animations/animationSectionTitles';
 import AnimationLR from '@components/animations/animationLR';
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+// import { spaceGrotesk } from "../fonts/spaceGrotesk";
+import { spaceGrotesk } from "../../public/fonts/spaceGrotesk";
+
 
 export default function Thanks() {
 

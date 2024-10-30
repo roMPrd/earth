@@ -8,7 +8,8 @@ import AnimatedTitle from '@components/animations/animatedTitle';
 // import { motion } from "framer-motion";
 
 import { useRef, useState, useEffect } from 'react'
-import { spaceGrotesk } from "../fonts/spaceGrotesk";
+// import { spaceGrotesk } from "../fonts/spaceGrotesk";
+import { spaceGrotesk } from "../../public/fonts/spaceGrotesk";
 
 // <---------- import icons ---------->
 import { SlSizeFullscreen } from "react-icons/sl";

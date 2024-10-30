@@ -13,6 +13,7 @@ export default function Map() {
 
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(true)
+  // const apiKey = `${process.env.STADIA_MAP_API_KEY}`
 
   useEffect(() => {
     setInterval(() => {
@@ -21,9 +22,15 @@ export default function Map() {
       fetchWTIA()
       .then((res) => res.json())
       .then((data) => {
-        console.log("data from map", data)
-        setData(data)
-        setLoading(false)
+        if (!data[0].ok) {
+          // console.log("ERROR 429 FROM MAP", data[0].status)
+          throw Error(data.statusText);
+        }
+        else {
+          // console.log("data from map", data)
+          setData(data)
+          setLoading(false)
+        }
       })
       .catch((err) => console.log('Map fetch error from map:', err.message))
     }, 10000)
@@ -53,9 +60,9 @@ export default function Map() {
       <TileLayer
         className='cursorLarge'
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="
-        https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png
-        "
+        url=
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png"
+        
         // https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
       />
       <Marker
